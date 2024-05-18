@@ -13,6 +13,10 @@ janela.geometry('800x500')
 janela.title('Gatificador beta')
 
 #config janela//
+#config defs
+def cadastroRsg():
+    
+
 #tab config
 
 tab = ttk.Notebook(janela)
@@ -23,104 +27,63 @@ tab.place(
     width=800,
     height=500)
 
-psq=Frame(tab)
-cds=Frame(tab)
-vsl=Frame(tab)
-edit=Frame(tab)
+rgs=Frame(tab)
+gato=Frame(tab)
+ttr=Frame(tab)
 
-tab.add(psq,text='Recibo')
-tab.add(cds,text='Cadastro')
-tab.add(vsl,text='Visualizar')
-tab.add(edit,text='Editar')
+tab.add(rgs,text='Resgatador')
+tab.add(gato,text='Gato')
+tab.add(ttr,text='Tutor')
 #tab config //
-#aba pesquisa
+#aba resgatador
 
-PsqSpc = tk.Label(
-    psq,
-    height=2
-)
-PsqSpc.pack()
+lblRsg = tk.Label(
+    rgs,
+    text='Resgatador')
+lblRsg.pack()
 
-psqBar = tk.Entry(
-    psq,
-    width = 50
-)
-psqBar.pack()
-
-PsqSpc2 = tk.Label(
-    psq,
-    height=1
-)
-PsqSpc2.pack()
-
-btnPsq = tk.Button(
-    psq,
-    #command = ,
-    text = 'Pesquisar'
-)
-btnPsq.pack()
-#aba pesquisa//
-#aba cadastro
-
-lblCdsNr = tk.Label(
-    cds,
-    text='Resgate nº')
-lblCdsNr.pack()
-
-entryCdsNr = tk.Entry(
-    cds,
+entryRsg = tk.Entry(
+    rgs,
     width=50)
-entryCdsNr.pack()
+entryRsg.pack()
 
 lblCdsNm = tk.Label(
-    cds,
-    text='Nome')
+    rgs,
+    text='Número')
 lblCdsNm.pack()
 
 entryCdsNm = tk.Entry(
-    cds,
+    rgs,
     width=50)
 entryCdsNm.pack()
 
-lblCdsCor = tk.Label(
-    cds,
-    text='Cor predominante')
-lblCdsCor.pack()
+lblRsgQtd = tk.Label(
+    rgs,
+    text='Quantidade de Resgatados')
+lblRsgQtd.pack()
 
-entryCdsCor = tk.Entry(
-    cds,
+entryRsgQtd = tk.Entry(
+    rgs,
     width=50)
-entryCdsCor.pack()
+entryRsgQtd.pack()
 
-lblCdsPel = tk.Label(
-    cds,
-    text='Padrão de pelagem')
-lblCdsPel.pack()
+lblCdsOrg = tk.Label(
+    rgs,
+    text='De onde veio')
+lblCdsOrg.pack()
 
-entryCdsPel = tk.Entry(
-    cds,
+entryCdsOrg = tk.Entry(
+    rgs,
     width=50)
-entryCdsPel.pack()
+entryCdsOrg.pack()
 
 lblFants = tk.Label(
-    cds,
+    rgs,
     height=2)
 lblFants.pack()
 
-lblTut = tk.Label(
-    cds,
-    text = 'Tutor'
-)
-lblTut.pack()
-
-combo = Combobox(cds)
-combo['values']= ('Indefinido',
-                  'Tem tutor',
-                  'Não tem tutor')
-combo.pack()
-
 btnCds = tk.Button(
-    cds,
+    rgs,
     #command=cadastrar,
     text = 'Cadastrar',
     width=20,
@@ -128,17 +91,169 @@ btnCds = tk.Button(
 btnCds.pack()
 
 lblSpcs = tk.Label(
-    cds,
+    rgs,
     height=1)
 lblSpcs.pack()
 
 btnLimp = tk.Button(
-    cds,
+    rgs,
     #command=limpar2,
     text = 'Limpar',
     width=20,
     height=2)
 btnLimp.pack()
-#cds //
+#aba resgatador //
+#aba gato
+
+lblCor = tk.Label(
+    gato,
+    text='Cor da pelagem'
+)
+lblCor.pack()
+
+cor = Combobox(gato)
+cor['values']= ('Branco',
+                  'Preto',
+                  'Frajola',
+                  'Siames',
+                  'Escaminha',
+                  'Tricolor',
+                  'Tigrado',
+                  'Tigrado com branco',
+                  'Cinza',
+                  'Laranja',
+                  'Cinza com branco',
+                  'Laranja com branco',
+                  'Outros')
+cor.pack()
+
+lblCorOlhos = tk.Label(
+    gato,
+    text='Cor dos olhos'
+)
+lblCorOlhos.pack()
+
+corOlho = Combobox(gato)
+corOlho['values']= ('Amarelo',
+                    'Verde',
+                    'Azul',
+                    'Um de cada cor')
+corOlho.pack()
+
+lblSex = tk.Label(
+    gato,
+    text='Sexo')
+lblSex.pack()
+
+sexo = Combobox(gato)
+sexo['values']= ('Macho',
+                 'Fêmea',
+                 'Não identificado')
+sexo.pack()
+
+lblId = tk.Label(
+    gato,
+    text='Idade')
+lblId.pack()
+
+id = Combobox(gato)
+id['values']= ('Bebê',
+               'Filhote',
+               'Adulto',)
+id.pack()
+
+lblObs = tk.Label(
+    gato,
+    text='Observações')
+lblObs.pack()
+
+entryObs = tk.Entry(
+    gato,
+    width=50)
+entryObs.pack()
+
+lblFant1 = tk.Label(
+    gato,
+    height=2)
+lblFant1.pack()
+
+btnCds1 = tk.Button(
+    gato,
+    #command=cadastrar,
+    text = 'Cadastrar',
+    width=20,
+    height=2)
+btnCds1.pack()
+
+lblSpc1 = tk.Label(
+    gato,
+    height=1)
+lblSpc1.pack()
+
+btnLimp1 = tk.Button(
+    gato,
+    #command=limpar2,
+    text = 'Limpar',
+    width=20,
+    height=2)
+btnLimp1.pack()
+#aba gato //
+#aba tutor
+
+lblTut = tk.Label(
+    ttr,
+    text='Tem tutor?')
+lblTut.pack()
+
+tut = Combobox(ttr)
+tut['values'] = ('Sim',
+                 'Não')
+tut.pack()
+
+lblTut = tk.Label(
+    ttr,
+    text='Tutor')
+lblTut.pack()
+
+entryTut = tk.Entry(
+    ttr,
+    width=50)
+entryTut.pack()
+
+tutNr = tk.Label(
+    ttr,
+    text='Número')
+tutNr.pack()
+
+entryNr = tk.Entry(
+    ttr,
+    width=50)
+entryNr.pack()
+
+lblFant2 = tk.Label(
+    ttr,
+    height=2)
+lblFant2.pack()
+
+btnCds2 = tk.Button(
+    ttr,
+    #command=cadastrar,
+    text = 'Cadastrar',
+    width=20,
+    height=2)
+btnCds2.pack()
+
+lblSpc2 = tk.Label(
+    ttr,
+    height=1)
+lblSpc2.pack()
+
+btnLimp2 = tk.Button(
+    ttr,
+    #command=limpar2,
+    text = 'Limpar',
+    width=20,
+    height=2)
+btnLimp2.pack()
 
 janela.mainloop()
