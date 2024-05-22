@@ -4,19 +4,35 @@ from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
 from tkinter.ttk import *
+from openpyxl import Workbook
+
 
 
 #config janela
 janela = tk.Tk()
 janela.resizable(0,0)
 janela.geometry('800x500')
-janela.title('Gatificador beta')
+janela.title('resGatados')
 
 #config janela//
+#criar/abre planilha
+wb = Workbook()#TESTAR
+planilha = wb.active#TESTAR
+#criar/abre planilha//
 #config defs
 def cadastroRsg():
-    
 
+  getRsg = entryRsg.get()
+  getNm  = entryCdsNm.get()
+  getQtd = entryRsgQtd.get()
+  getOrg = entryCdsOrg.get()
+
+  planilha['B2'] = getRsg
+  planilha['C2'] = getNm
+  planilha['D2'] = getQtd
+  planilha['E2'] = getOrg
+
+  wb.save('resGatados.xlsx')
 #tab config
 
 tab = ttk.Notebook(janela)
@@ -84,7 +100,7 @@ lblFants.pack()
 
 btnCds = tk.Button(
     rgs,
-    #command=cadastrar,
+    command=cadastroRsg,
     text = 'Cadastrar',
     width=20,
     height=2)
@@ -179,7 +195,7 @@ lblFant1.pack()
 
 btnCds1 = tk.Button(
     gato,
-    #command=cadastrar,
+    #command=cadastroRsg,
     text = 'Cadastrar',
     width=20,
     height=2)
