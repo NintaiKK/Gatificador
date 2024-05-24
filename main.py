@@ -5,8 +5,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from tkinter.ttk import *
 from openpyxl import Workbook
-
-
+from openpyxl import load_workbook
 
 #config janela
 janela = tk.Tk()
@@ -14,26 +13,86 @@ janela.resizable(0,0)
 janela.geometry('800x500')
 janela.title('resGatados')
 
-#config janela//
-#criar/abre planilha
-wb = Workbook()#TESTAR
-planilha = wb.active#TESTAR
-#criar/abre planilha//
-#config defs
 def cadastroRsg():
+  
+  try:
+        wb = load_workbook('resGatados.xlsx')
+  except FileNotFoundError:
+        wb = Workbook()
+
+  planilha = wb.active
 
   getRsg = entryRsg.get()
   getNm  = entryCdsNm.get()
   getQtd = entryRsgQtd.get()
   getOrg = entryCdsOrg.get()
 
-  planilha['B2'] = getRsg
-  planilha['C2'] = getNm
-  planilha['D2'] = getQtd
-  planilha['E2'] = getOrg
+  planilha.append([getRsg, getNm, getQtd, getOrg])
 
   wb.save('resGatados.xlsx')
+  
+  entryRsg.delete(0, tk.END)
+  entryCdsNm.delete(0, tk.END)
+  entryRsgQtd.delete(0, tk.END)
+  entryCdsOrg.delete(0, tk.END)
+
+  messagebox.showinfo('Sucesso!', 'Resgatador cadastrado, não esqueça de cadastrar os gatos!')
+
+def cadastroGato():
+  
+  try:
+        wb = load_workbook('resGatados.xlsx')
+  except FileNotFoundError:
+        wb = Workbook()
+
+  planilha = wb.active
+
+  getCor = cor.get()
+  getCO  = corOlho.get()
+  getSexo = sexo.get()
+  getId = id.get()
+  getObs = entryObs.get()
+
+  planilha.append([getCor, getCO, getSexo, getId, getObs])
+
+  wb.save('resGatados.xlsx')
+
+  entryObs.delete(0, tk.END)
+
+  messagebox.showinfo('Sucesso!', 'Gato cadastrado com sucesso!')
+
+def cadastroTutor():
+  
+  try:
+        wb = load_workbook('resGatados.xlsx')
+  except FileNotFoundError:
+        wb = Workbook()
+
+  planilha = wb.active
+
+  getTut = tut.get()
+  getNmTut  = entryTut.get()
+  getNrTut = entryNr.get()
+
+  planilha.append([getTut, getNmTut, getNrTut])
+
+  wb.save('resGatados.xlsx')
+
+  entryTut.delete(0, tk.END)
+  entryNr.delete(0, tk.END)
+  
+
+  messagebox.showinfo('Sucesso!', 'Tutor cadastrado com sucesso!')
+
+def limpar():
+    entryRsg.delete(0, tk.END)
+    entryCdsNm.delete(0, tk.END)
+    entryRsgQtd.delete(0, tk.END)
+    entryCdsOrg.delete(0, tk.END)
 #tab config
+
+#tab 
+#separar entrada e saída#######################
 
 tab = ttk.Notebook(janela)
 
@@ -51,8 +110,10 @@ tab.add(rgs,text='Resgatador')
 tab.add(gato,text='Gato')
 tab.add(ttr,text='Tutor')
 #tab config //
+#aba data
+##data#########################################
+#aba data//
 #aba resgatador
-
 lblRsg = tk.Label(
     rgs,
     text='Resgatador')
@@ -113,11 +174,14 @@ lblSpcs.pack()
 
 btnLimp = tk.Button(
     rgs,
-    #command=limpar2,
+    command=limpar,
     text = 'Limpar',
     width=20,
     height=2)
 btnLimp.pack()
+
+#voluntário######################################
+
 #aba resgatador //
 #aba gato
 
@@ -195,7 +259,7 @@ lblFant1.pack()
 
 btnCds1 = tk.Button(
     gato,
-    #command=cadastroRsg,
+    command=cadastroGato,
     text = 'Cadastrar',
     width=20,
     height=2)
@@ -253,7 +317,7 @@ lblFant2.pack()
 
 btnCds2 = tk.Button(
     ttr,
-    #command=cadastrar,
+    command=cadastroTutor,
     text = 'Cadastrar',
     width=20,
     height=2)
