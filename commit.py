@@ -12,8 +12,9 @@ janela.title('resGatados')
 
 def opEnt():
     janela2 = tk.Toplevel()
+    janela2.resizable(0,0)
     janela2.title('Cadastro de entrada')
-    janela2.geometry('500x400')
+    janela2.geometry('500x600')
 
     dtRsg = tk.Label(
         janela2,
@@ -24,6 +25,11 @@ def opEnt():
         janela2,
         width = 15)
     dtEntr.pack()
+
+    resLbl = tk.Label(
+        janela2,
+        text = 'Origem')
+    resLbl.pack()
 
     resRet = Combobox(janela2)
     resRet['values']= ('Resgate',
@@ -59,25 +65,186 @@ def opEnt():
         janela2,
         width = 15)
     tlfEntr.pack()
+
+    end = tk.Label(
+        janela2,
+        text = 'Endereço do tutor')
+    end.pack()
+
+    endEntr = tk.Entry(
+        janela2,
+        width = 15)
+    endEntr.pack()
+
+    cidd = tk.Label(
+        janela2,
+        text = 'Cidade do tutor')
+    cidd.pack()
+
+    ciddEntr = tk.Entry(
+        janela2,
+        width = 15)
+    ciddEntr.pack()
+
+    orig = tk.Label(
+        janela2,
+        text = 'Local de origem do gato')
+    orig.pack()
     
+    origEntr = tk.Entry(
+        janela2,
+        width = 15)
+    origEntr.pack()
+    
+    corLbl = tk.Label(
+        janela2,
+        text = 'Cor/Pelagem')
+    corLbl.pack()
+
+    cor = Combobox(janela2)
+    cor['values']= ('Branco',
+                  'Preto',
+                  'Frajola',
+                  'Siames',
+                  'Escaminha',
+                  'Tricolor',
+                  'Tigrado',
+                  'Tigrado com branco',
+                  'Cinza',
+                  'Laranja',
+                  'Cinza com branco',
+                  'Laranja com branco',
+                  'Outros')
+    cor.pack()
+
+    lblCorOlhos = tk.Label(
+    janela2,
+    text='Cor dos olhos')
+    lblCorOlhos.pack()
+
+    corOlho = Combobox(janela2)
+    corOlho['values']= ('Amarelo',
+                    'Verde',
+                    'Azul',
+                    'Um de cada cor')
+    corOlho.pack()
+
+    lblSex = tk.Label(
+    janela2,
+    text='Sexo')
+    lblSex.pack()
+
+    sexo = Combobox(janela2)
+    sexo['values']= ('Macho',
+                 'Fêmea',
+                 'Não identificado')
+    sexo.pack()
+
+    lblId = tk.Label(
+    janela2,
+    text='Idade')
+    lblId.pack()
+
+    id = Combobox(janela2)
+    id['values']= ('Bebê',
+               'Filhote',
+               'Adulto',)
+    id.pack()
+
+    lblObs = tk.Label(
+    janela2,
+    text='Observações')
+    lblObs.pack()
+
+    entryObs = tk.Entry(
+    janela2,
+    width=50)
+    entryObs.pack()
+
     botao_voltar1 = tk.Button(janela2, text = 'Fechar a janela2', command = janela2.destroy)
     botao_voltar1.pack()
 
-def opTr():
-    janela3 = tk.Toplevel()
-    janela3.title('Cadastro de triagem')
-    janela3.geometry('200x200')
-    botao_voltar2 = tk.Button(janela3, text = 'Fechar a janela3', command = janela3.destroy)
-    botao_voltar2.pack()
+#def opTr():
+#    janela3 = tk.Toplevel()
+#    janela3.title('Cadastro de triagem')
+#    janela3.geometry('200x200')
+#    botao_voltar2 = tk.Button(janela3, text = 'Fechar a janela3', command = janela3.destroy)
+#    botao_voltar2.pack()
 
 def opSai():
     janela4 = tk.Toplevel()
     janela4.title('Cadastro de saída')
-    janela4.geometry('200x200')
+    janela4.geometry('500x500')
+    janela4.resizable(0,0)
+
+    lblIde = tk.Label(
+    janela4,
+    text='Id da coleira')
+    lblIde.pack()
+
+    entryIde = tk.Entry(
+    janela4,
+    width=50)
+    entryIde.pack()
+
+    lblSai = tk.Label(
+    janela4,
+    text='Motivo da saída')
+    lblSai.pack()
+
+    mot = Combobox(janela4)
+    mot['values'] = ('Adotado',
+                 'Identificado',
+                 'Lar temporário',
+                 'Outro')
+    mot.pack()
+
+    lblObs = tk.Label(
+    janela4,
+    text='Observações')
+    lblObs.pack()
+
+    entryObs = tk.Entry(
+    janela4,
+    width=50)
+    entryObs.pack()
+
+    lblNmTut = tk.Label(
+    janela4,
+    text='Nome do novo tutor')
+    lblNmTut.pack()
+
+    entryNmTut = tk.Entry(
+    janela4,
+    width=50)
+    entryNmTut.pack()
+
+    tutNr = tk.Label(
+    janela4,
+    text='Número do novo tutor')
+    tutNr.pack()
+
+    entryNrTut = tk.Entry(
+    janela4,
+    width=50)
+    entryNrTut.pack()
+
+    lblFanti = tk.Label(
+    janela4,
+    height=2)
+    lblFanti.pack()
+
+    btnCdsi = tk.Button(
+    janela4,
+    #command=cadastroData,
+    text = 'Cadastrar',
+    width=20,
+    height=2)
+    btnCdsi.pack()
+
     botao_voltar3 = tk.Button(janela4, text = 'Fechar a janela4', command = janela4.destroy)
     botao_voltar3.pack()
     
-
 a = tk.Frame()
 b = tk.Frame()
 c = tk.Frame()
@@ -102,17 +269,17 @@ btnCds = tk.Button(
     text = 'Entrada')
 btnCds.pack()
 
-lblSpc = tk.Label(
-    master = b,
-    width = 15)
-lblSpc.pack()
+#lblSpc = tk.Label(
+#    master = b,
+#    width = 15)
+#lblSpc.pack()
 
-btnTrg = tk.Button(
-    command = opTr,
-    master = b,
-    width = 15,
-    text = 'Triagem')
-btnTrg.pack()
+#btnTrg = tk.Button(
+#    command = opTr,
+#    master = b,
+#    width = 15,
+#    text = 'Triagem')
+#btnTrg.pack()
 
 btnSpc = tk.Label(
     master = b,
@@ -124,12 +291,10 @@ btnSd = tk.Button(
     master = b,
     width = 15,
     text = 'Saida')
-btnSd.pack()
-    
+btnSd.pack()  
 
 a.pack(side = LEFT)
 c.pack(side = LEFT)
 b.pack(side = LEFT)
-
 
 janela.mainloop()
