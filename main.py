@@ -1,240 +1,108 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import filedialog
-from tkinter import messagebox
 from tkinter import ttk
 from tkinter.ttk import *
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
-#config janela
 janela = tk.Tk()
 janela.resizable(0,0)
 janela.geometry('800x500')
 janela.title('resGatados')
 
-def cadastroRsg():
-  
-  try:
-        wb = load_workbook('resGatados.xlsx')
-  except FileNotFoundError:
-        wb = Workbook()
+def opEnt():
+    janela2 = tk.Toplevel()
+    janela2.resizable(0,0)
+    janela2.title('Cadastro de entrada')
+    janela2.geometry('500x600')
 
-  planilha = wb.active
+    dtRsg = tk.Label(
+        janela2,
+        text = 'Data do resgate',)
+    dtRsg.pack()
 
-  getRsg = entryRsg.get()
-  getNm  = entryCdsNm.get()
-  getQtd = entryRsgQtd.get()
-  getOrg = entryCdsOrg.get()
-  getVol = entryVol.get()
+    dtEntr = tk.Entry(
+        janela2,
+        width = 15)
+    dtEntr.pack()
 
-  planilha.append(['Resgatador', 'Número do resgatador', 'Quantidade de resgatados', 'Origiem', 'Voluntário'])
-  planilha.append([getRsg, getNm, getQtd, getOrg, getVol])
+    resLbl = tk.Label(
+        janela2,
+        text = 'Origem')
+    resLbl.pack()
 
-  wb.save('resGatados.xlsx')
-  
-  entryRsg.delete(0, tk.END)
-  entryCdsNm.delete(0, tk.END)
-  entryRsgQtd.delete(0, tk.END)
-  entryCdsOrg.delete(0, tk.END)
-  entryVol.delete(0, tk.END)
+    resRet = Combobox(janela2)
+    resRet['values']= ('Resgate',
+                       'Retorno')
+    resRet.pack()
+    
+    cdReg = tk.Label(
+        janela2,
+        text = 'Código de registro')
+    cdReg.pack()
 
-  messagebox.showinfo('Sucesso!', 'Resgatador cadastrado, não esqueça de cadastrar os gatos!')
+    cdBtn = tk.Entry(
+        janela2,
+        width = 15)
+    cdBtn.pack()
 
-def cadastroTutor():
-  
-  try:
-        wb = load_workbook('resGatados.xlsx')
-  except FileNotFoundError:
-        wb = Workbook()
+    ttrRsp = tk.Label(
+        janela2,
+        text = 'Tutor/Responsável')
+    ttrRsp.pack()
 
-  planilha = wb.active
+    ttrEntr = tk.Entry(
+        janela2,
+        width = 15)
+    ttrEntr.pack()
 
-  getCor = cor.get()
-  getCO  = corOlho.get()
-  getSexo = sexo.get()
-  getId = id.get()
-  getObs = entryObs.get()
-  getTut = tut.get()
-  getNmTut  = entryTut.get()
-  getNrTut = entryNr.get()
+    tlf = tk.Label(
+        janela2,
+        text = 'Telefone do tutor')
+    tlf.pack()
 
-  planilha.append(['Cor', 'Cor dos olhos','Sexo', 'Idade', 'Observações', 'Tem tutor?', 'Tutor', 'Número Tutor'])
-  planilha.append([getCor, getCO, getSexo, getId, getObs, getTut, getNmTut, getNrTut])
+    tlfEntr = tk.Entry(
+        janela2,
+        width = 15)
+    tlfEntr.pack()
 
-  wb.save('resGatados.xlsx')
+    end = tk.Label(
+        janela2,
+        text = 'Endereço do tutor')
+    end.pack()
 
-  entryTut.delete(0, tk.END)
-  entryNr.delete(0, tk.END)
-  
+    endEntr = tk.Entry(
+        janela2,
+        width = 15)
+    endEntr.pack()
 
-  messagebox.showinfo('Sucesso!', 'Gato cadastrado com sucesso!')
+    cidd = tk.Label(
+        janela2,
+        text = 'Cidade do tutor')
+    cidd.pack()
 
-def cadastroData():
-  try:
-        wb = load_workbook('resGatados.xlsx')
-  except FileNotFoundError:
-        wb = Workbook()
+    ciddEntr = tk.Entry(
+        janela2,
+        width = 15)
+    ciddEntr.pack()
 
-  planilha = wb.active
+    orig = tk.Label(
+        janela2,
+        text = 'Local de origem do gato')
+    orig.pack()
+    
+    origEntr = tk.Entry(
+        janela2,
+        width = 15)
+    origEntr.pack()
+    
+    corLbl = tk.Label(
+        janela2,
+        text = 'Cor/Pelagem')
+    corLbl.pack()
 
-  getData = entryData.get()
-  
-  planilha.append([getData])
-
-  wb.save('resGatados.xlsx')
-
-  entryData.delete(0, tk.END)
-  
-
-  messagebox.showinfo('Sucesso!', 'Data cadastrada com sucesso!')
-
-def cadastroSaida():
-  try:
-        wb = load_workbook('resGatados.xlsx')
-  except FileNotFoundError:
-        wb = Workbook()
-
-  planilha = wb.active
-
-  getIde - entryIde.get()
-  getMot = mot.get()
-  getObs = entryObs.get()
-  getNmTut = entryNmTut.get()
-  getNrTut = entryNrTut.get()
-
-  planilha.append(['Id coleira', 'Motiva da saída', 'Observações', 'Tutor', 'Número do tutor'])
-  planilha.append([getIde, getMot, getObs, getNmTut, getNrTut])
-
-  wb.save('resGatados.xlsx')
-
-  entryIde.delete(0, tk.END)
-  entryObs.delete(0, tk.END)
-  entryNmTut.delete(0, tk.END)
-  entryNrTut.delete(0, tk.END)
-  
-  messagebox.showinfo('Sucesso!', 'Data cadastrada com sucesso!')
-#tab config
-
-#tab
-#separar entrada e saída#######################
-tab = ttk.Notebook(janela)
-
-tab.place(
-    x=0,
-    y=0,
-    width=800,
-    height=500)
-
-data=Frame(tab)
-rgs=Frame(tab)
-gato=Frame(tab)
-saida=Frame(tab)
-
-tab.add(data,text='Data')
-tab.add(rgs,text='Resgatador')
-tab.add(gato,text='Gato')
-tab.add(saida,text='Saída')
-#tab config //
-#aba data
-lblData = tk.Label(
-  data,
-  text='Data do cadastro')
-lblData.pack()
-
-entryData = tk.Entry(
-  data,
-  width=50)
-entryData.pack()
-
-lblFantl = tk.Label(
-    data,
-    height=2)
-lblFantl.pack()
-
-btnCds = tk.Button(
-    data,
-    command=cadastroData,
-    text = 'Cadastrar',
-    width=20,
-    height=2)
-btnCds.pack()
-#aba data//
-#aba resgatador
-lblRsg = tk.Label(
-    rgs,
-    text='Resgatador')
-lblRsg.pack()
-
-entryRsg = tk.Entry(
-    rgs,
-    width=50)
-entryRsg.pack()
-
-lblCdsNm = tk.Label(
-    rgs,
-    text='Número')
-lblCdsNm.pack()
-
-entryCdsNm = tk.Entry(
-    rgs,
-    width=50)
-entryCdsNm.pack()
-
-lblRsgQtd = tk.Label(
-    rgs,
-    text='Quantidade de Resgatados')
-lblRsgQtd.pack()
-
-entryRsgQtd = tk.Entry(
-    rgs,
-    width=50)
-entryRsgQtd.pack()
-
-lblCdsOrg = tk.Label(
-    rgs,
-    text='De onde veio')
-lblCdsOrg.pack()
-
-entryCdsOrg = tk.Entry(
-    rgs,
-    width=50)
-entryCdsOrg.pack()
-
-lblVol = tk.Label(
-    rgs,
-    text='Voluntário')
-lblVol.pack()
-
-entryVol = tk.Entry(
-  rgs,
-  width=50)
-entryVol.pack()
-
-lblFants = tk.Label(
-    rgs,
-    height=2)
-lblFants.pack()
-
-btnCds = tk.Button(
-    rgs,
-    command=cadastroRsg,
-    text = 'Cadastrar',
-    width=20,
-    height=2)
-btnCds.pack()
-
-#aba resgatador //
-#aba gato
-
-lblCor = tk.Label(
-    gato,
-    text='Cor da pelagem'
-)
-lblCor.pack()
-
-cor = Combobox(gato)
-cor['values']= ('Branco',
+    cor = Combobox(janela2)
+    cor['values']= ('Branco',
                   'Preto',
                   'Frajola',
                   'Siames',
@@ -247,162 +115,220 @@ cor['values']= ('Branco',
                   'Cinza com branco',
                   'Laranja com branco',
                   'Outros')
-cor.pack()
+    cor.pack()
 
-lblCorOlhos = tk.Label(
-    gato,
-    text='Cor dos olhos'
-)
-lblCorOlhos.pack()
+    lblCorOlhos = tk.Label(
+    janela2,
+    text='Cor dos olhos')
+    lblCorOlhos.pack()
 
-corOlho = Combobox(gato)
-corOlho['values']= ('Amarelo',
+    corOlho = Combobox(janela2)
+    corOlho['values']= ('Amarelo',
                     'Verde',
                     'Azul',
                     'Um de cada cor')
-corOlho.pack()
+    corOlho.pack()
 
-lblSex = tk.Label(
-    gato,
+    lblSex = tk.Label(
+    janela2,
     text='Sexo')
-lblSex.pack()
+    lblSex.pack()
 
-sexo = Combobox(gato)
-sexo['values']= ('Macho',
+    sexo = Combobox(janela2)
+    sexo['values']= ('Macho',
                  'Fêmea',
                  'Não identificado')
-sexo.pack()
+    sexo.pack()
 
-lblId = tk.Label(
-    gato,
+    lblId = tk.Label(
+    janela2,
     text='Idade')
-lblId.pack()
+    lblId.pack()
 
-id = Combobox(gato)
-id['values']= ('Bebê',
+    id = Combobox(janela2)
+    id['values']= ('Bebê',
                'Filhote',
                'Adulto',)
-id.pack()
+    id.pack()
 
-lblObs = tk.Label(
-    gato,
+    lblObs = tk.Label(
+    janela2,
     text='Observações')
-lblObs.pack()
+    lblObs.pack()
 
-entryObs = tk.Entry(
-    gato,
+    entryObs = tk.Entry(
+    janela2,
     width=50)
-entryObs.pack()
+    entryObs.pack()
 
-lblTut = tk.Label(
-    gato,
-    text='Tem tutor?')
-lblTut.pack()
+    btnCdsi = tk.Button(
+    janela2,
+    command=cadastroEntrada,
+    text = 'Cadastrar')
+    btnCdsi.pack()
 
-tut = Combobox(gato)
-tut['values'] = ('Sim',
-                 'Não')
-tut.pack()
+#def opTr():
+#    janela3 = tk.Toplevel()
+#    janela3.title('Cadastro de triagem')
+#    janela3.geometry('200x200')
+#    botao_voltar2 = tk.Button(janela3, text = 'Fechar a janela3', command = janela3.destroy)
+#    botao_voltar2.pack()
 
-lblTut = tk.Label(
-    gato,
-    text='Tutor')
-lblTut.pack()
+def opSai():
+    janela4 = tk.Toplevel()
+    janela4.title('Cadastro de saída')
+    janela4.geometry('500x500')
+    janela4.resizable(0,0)
 
-entryTut = tk.Entry(
-    gato,
+    lblIde = tk.Label(
+    janela4,
+    text='Id da coleira')
+    lblIde.pack()
+
+    entryIde = tk.Entry(
+    janela4,
     width=50)
-entryTut.pack()
+    entryIde.pack()
 
-tutNr = tk.Label(
-    gato,
-    text='Número')
-tutNr.pack()
+    lblSai = tk.Label(
+    janela4,
+    text='Motivo da saída')
+    lblSai.pack()
 
-entryNr = tk.Entry(
-    gato,
-    width=50)
-entryNr.pack()
-
-lblFant2 = tk.Label(
-    gato,
-    height=2)
-lblFant2.pack()
-
-btnCds2 = tk.Button(
-    gato,
-    command=cadastroTutor,
-    text = 'Cadastrar',
-    width=20,
-    height=2)
-btnCds2.pack()
-#aba gato//
-#aba saída
-lblIde = tk.Label(
-  saida,
-  text='Id da coleira')
-lblIde.pack()
-
-entryIde = tk.Entry(
-  saida,
-  width=50)
-entryIde.pack()
-
-lblSai = tk.Label(
-  saida,
-  text='Motivo da saída')
-lblSai.pack()
-
-mot = Combobox(saida)
-mot['values'] = ('Adotado',
+    mot = Combobox(janela4)
+    mot['values'] = ('Adotado',
                  'Identificado',
                  'Lar temporário',
                  'Outro')
-mot.pack()
+    mot.pack()
 
-lblObs = tk.Label(
-  saida,
-  text='Observações')
-lblObs.pack()
+    lblObs = tk.Label(
+    janela4,
+    text='Observações')
+    lblObs.pack()
 
-entryObs = tk.Entry(
-  saida,
-  width=50)
-entryObs.pack()
+    entryObs = tk.Entry(
+    janela4,
+    width=50)
+    entryObs.pack()
 
-lblNmTut = tk.Label(
-    saida,
+    lblNmTut = tk.Label(
+    janela4,
     text='Nome do novo tutor')
-lblNmTut.pack()
+    lblNmTut.pack()
 
-entryNmTut = tk.Entry(
-    saida,
+    entryNmTut = tk.Entry(
+    janela4,
     width=50)
-entryNmTut.pack()
+    entryNmTut.pack()
 
-tutNr = tk.Label(
-    saida,
+    tutNr = tk.Label(
+    janela4,
     text='Número do novo tutor')
-tutNr.pack()
+    tutNr.pack()
 
-entryNrTut = tk.Entry(
-    saida,
+    entryNrTut = tk.Entry(
+    janela4,
     width=50)
-entryNrTut.pack()
+    entryNrTut.pack()
 
-lblFanti = tk.Label(
-    saida,
+    lblFanti = tk.Label(
+    janela4,
     height=2)
-lblFanti.pack()
+    lblFanti.pack()
 
-btnCdsi = tk.Button(
-    saida,
-    command=cadastroData,
-    text = 'Cadastrar',
-    width=20,
-    height=2)
-btnCdsi.pack()
+    btnCdsi = tk.Button(
+    janela4,
+    #command=cadastroData,
+    text = 'Cadastrar')
+    btnCdsi.pack()
+
+def cadastroEntrada():
+  try:
+        wb = load_workbook('resGatados.xlsx')
+  except FileNotFoundError:
+        wb = Workbook()
+
+  planilha = wb.active
+
+  getData = dtEntr.get()
+  getResRet = resRet.get()
+  getCd = cdBtn.get()
+  getTtr = ttrEntr.get()
+  getTlf = tlfEntr.get()
+  getEnd = endEntr.get()
+  getCidd = ciddEntr.get()
+  getOrig = origEntr.get()
+  getCor = cor.get()
+  getCorOlho = corOlho.get()
+  getSexo = sexo.get()
+  getId = id.get()
+  getObs = entryObs.get()
+
+  planilha.append(['Data', 'Origem', 'Código de registro', 'Tutor/Responsável', 'Telefone do tutor', 'Endereço do tutor', 'Endereço do tutor', 'Cidade do tutor', 'Local de origem do gato', 'Cor/Pelagem', 'Cor dos olhos', 'Sexo', 'Idade', 'Observações'])
+  planilha.append([getData, getResRet, getCd, getTtr, getTlf, getEnd, getCidd, getOrig, getCor, getCorOlho, getSexo, getId, getObs])
+
+  wb.save('resGatados.xlsx')
+  
+  dtEntr.delete(0, tk.END)
+  resRet.delete(0, tk.END)
+  cdBtn.delete(0, tk.END)
+  ttrEntr.delete(0, tk.END)
+  tlfEntr.delete(0, tk.END)
+  endEntr.delete(0, tk.END)
+  ciddEntr.delete(0, tk.END)
+  entryObs.delete(0, tk.END)
     
-#aba saída//
+a = tk.Frame()
+b = tk.Frame()
+c = tk.Frame()
+
+lblVrd = tk.Label(
+    master= a,
+    height = 100,
+    width = 45,
+    text='OnlyCats',
+    bg='grey')
+lblVrd.pack()
+
+lblSpcs = tk.Label(
+    master = c,
+    width = 25)
+lblSpcs.pack()
+
+btnCds = tk.Button(
+    master = b,
+    command = opEnt,
+    width = 15,
+    text = 'Entrada')
+btnCds.pack()
+
+#lblSpc = tk.Label(
+#    master = b,
+#    width = 15)
+#lblSpc.pack()
+
+#btnTrg = tk.Button(
+#    command = opTr,
+#    master = b,
+#    width = 15,
+#    text = 'Triagem')
+#btnTrg.pack()
+
+btnSpc = tk.Label(
+    master = b,
+    height = 1)
+btnSpc.pack()
+
+btnSd = tk.Button(
+    command = opSai,
+    master = b,
+    width = 15,
+    text = 'Saida')
+btnSd.pack()  
+
+a.pack(side = LEFT)
+c.pack(side = LEFT)
+b.pack(side = LEFT)
 
 janela.mainloop()
